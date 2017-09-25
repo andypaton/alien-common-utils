@@ -6,7 +6,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.bskyb.acceptance.webdriver.CucumberWebDriver;
+import com.alien.utils.webdriver.CucumberWebDriver;
 
 import cucumber.api.Scenario;
 

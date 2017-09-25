@@ -5,15 +5,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import com.bskyb.acceptance.webdriver.drivers.ChromeDriverForCucumber;
-import com.bskyb.acceptance.webdriver.drivers.FirefoxDriverForCucumber;
-import com.bskyb.acceptance.webdriver.drivers.HtmlUnitDriverForCucumber;
-import com.bskyb.acceptance.webdriver.drivers.PhantomJSDriverForCucumber;
-import com.bskyb.acceptance.webdriver.drivers.RemoteWebDriverForCucumber;
+import com.alien.utils.webdriver.drivers.ChromeDriverForCucumber;
+import com.alien.utils.webdriver.drivers.FirefoxDriverForCucumber;
+import com.alien.utils.webdriver.drivers.HtmlUnitDriverForCucumber;
+import com.alien.utils.webdriver.drivers.PhantomJSDriverForCucumber;
+import com.alien.utils.webdriver.drivers.RemoteWebDriverForCucumber;
 
-@Component
 public class DriverFactory {
 
     private static final int WAIT = 30;

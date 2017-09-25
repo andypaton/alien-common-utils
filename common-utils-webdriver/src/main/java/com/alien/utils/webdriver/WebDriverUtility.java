@@ -8,19 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.bskyb.acceptance.AcceptanceTestException;
-import com.bskyb.acceptance.TestFrameworkUtility;
-import com.bskyb.acceptance.runtime.AcceptanceTestRuntimeState;
+import com.alien.utils.webdriver.AcceptanceTestException;
+import com.alien.utils.webdriver.TestFrameworkUtility;
 
-@Component
-    public class WebDriverUtility extends TestFrameworkUtility {
+public class WebDriverUtility extends TestFrameworkUtility {
 
-    @Autowired
-    private AcceptanceTestRuntimeState acceptanceTestRuntimeState;
-    @Autowired
     private DriverFactory driverFactory;
 
-    @Autowired
     private ApplicationContext context;
 
     public CucumberWebDriver getWebDriver() {
