@@ -16,7 +16,7 @@
 
 	<modules>
 		<module>common-utils-webdriver</module>
-		<module>common-utils-reporting</module>
+		<module>common-utils-report</module>
 		<module>common-utils-assertion</module>
 		<module>common-utils-db</module>
 		<module>common-utils-mq</module>
