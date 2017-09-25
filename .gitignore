@@ -1,0 +1,10 @@
+**/target
+.idea
+.project
+.settings
+.repository
+*.iml
+.classpath
+*.FDC
+*.pmd
+*.log
