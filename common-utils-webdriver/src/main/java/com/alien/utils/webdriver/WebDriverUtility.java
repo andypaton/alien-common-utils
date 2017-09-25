@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 import com.alien.utils.webdriver.AcceptanceTestException;
 import com.alien.utils.webdriver.TestFrameworkUtility;
@@ -15,14 +12,12 @@ public class WebDriverUtility extends TestFrameworkUtility {
 
     private DriverFactory driverFactory;
 
-    private ApplicationContext context;
-
     public CucumberWebDriver getWebDriver() {
-        return acceptanceTestRuntimeState.getWebDriver();
+        return getWebDriver();
     }
 
     public void takeScreenShot(String description) {
-        getWebDriver().takeScreenShot(acceptanceTestRuntimeState.getScenario(), description);
+        getWebDriver().takeScreenShot(getScenario(), description);
     }
 
     public void takeScreenShot() {
@@ -35,9 +30,9 @@ public class WebDriverUtility extends TestFrameworkUtility {
 
     public void closeDriver() {
 
-        if (acceptanceTestRuntimeState.getWebDriver() != null) {
-        	acceptanceTestRuntimeState.getWebDriver().quit();
-        	acceptanceTestRuntimeState.setWebDriver(null);
+        if (getWebDriver() != null) {
+        	    getWebDriver().quit();
+        	    setWebDriver(null);
         }
 
     }
@@ -47,23 +42,23 @@ public class WebDriverUtility extends TestFrameworkUtility {
     }
 
     public void registerTargetEndpoint(String targetEndpoint, boolean useExistingDriver) {
-        context.getApplicationName();
+    	
+//        context.getApplicationName();
 
         if (!useExistingDriver) {
             closeDriver();
         }
 
         try {
-            if (acceptanceTestRuntimeState.getWebDriver() != null) {
-            	acceptanceTestRuntimeState.getWebDriver().get(targetEndpoint);
+            if (getWebDriver() != null) {
+            	    getWebDriver().get(targetEndpoint);
             } else {
                 final CucumberWebDriver webDriver = driverFactory.getInstance();
-                acceptanceTestRuntimeState.setWebDriver(webDriver);
-                acceptanceTestRuntimeState.getWebDriver().get(targetEndpoint);
+                setWebDriver(webDriver);
+                getWebDriver().get(targetEndpoint);
             }
         } catch (IOException | URISyntaxException e) {
-            throw new AcceptanceTestException(
-                    "An error occurred registering a target endpoint via a Selenium web driver", e);
+            throw new AcceptanceTestException("An error occurred registering a target endpoint via a Selenium web driver", e);
         }
     }
 }

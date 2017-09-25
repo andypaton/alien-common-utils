@@ -31,10 +31,7 @@ public class DriverFactory {
 
     private static final String PHANTOMJS = "phantom";
 
-    @Value("${web.driver:firefox}")
     private String webDriver;
-
-    @Value("${web.batch.admin.remote.hub:}")
     private String hub;
 
     public CucumberWebDriver getInstance() throws IOException, URISyntaxException {
@@ -42,7 +39,11 @@ public class DriverFactory {
         CucumberWebDriver driver;
 
         if (System.getProperty("web.driver") != null) {
-            webDriver = System.getProperty("web.driver");
+            webDriver = System.getProperty("webdriver");
+        }
+        
+        if (System.getProperty("web.batch.admin.remote.hub") != null) {
+            hub = System.getProperty("web.batch.admin.remote.hub");
         }
 
         if (CHROME.equals(webDriver)) {

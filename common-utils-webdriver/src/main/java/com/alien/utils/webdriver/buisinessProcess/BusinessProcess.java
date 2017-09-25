@@ -6,17 +6,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bskyb.acceptance.runtime.AcceptanceTestRuntimeState;
-import com.bskyb.acceptance.webdriver.WebDriverUtility;
+import com.alien.utils.webdriver.WebDriverUtility;
+
 
 public abstract class BusinessProcess implements BusinessProcessExecution {
 
 	private static final int WAIT_30_SECS = 30;
-    @Autowired
-    private AcceptanceTestRuntimeState acceptanceTestRuntimeState;
-    @Autowired
+
     private WebDriverUtility webDriverUtility;
 
     @Override
@@ -44,15 +41,15 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     protected abstract void runJob();
 
     protected WebDriver getWebDriver() {
-        return acceptanceTestRuntimeState.getWebDriver();
+        return webDriverUtility.getWebDriver();
     }
 
     protected void snap(String linkText) {
-        acceptanceTestRuntimeState.getWebDriver().takeScreenShot(acceptanceTestRuntimeState.getScenario(), linkText);
+     	webDriverUtility.getWebDriver().takeScreenShot(webDriverUtility.getScenario(), linkText);
     }
     
     protected void waitImplicity(long time) {
-    	getWebDriver().manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+     	getWebDriver().manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
     }
     
     protected void waitForElement(By locator) {
@@ -60,8 +57,8 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     }
 
     protected void waitForElement(By locator, int waitInSeconds) {
-    	WebDriverWait wait = new WebDriverWait(acceptanceTestRuntimeState.getWebDriver(), waitInSeconds);
-    	wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    	    WebDriverWait wait = new WebDriverWait(webDriverUtility.getWebDriver(), waitInSeconds);
+    	    wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     protected void waitForElementToBecomeVisible(By locator, int waitInSeconds) {
