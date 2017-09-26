@@ -9,6 +9,7 @@ import com.alien.utils.webdriver.CucumberWebDriver;
 
 import cucumber.api.Scenario;
 
+
 public class ChromeDriverForCucumber extends ChromeDriver implements CucumberWebDriver {
 
     private static final String IMAGE_PNG = "image/png";

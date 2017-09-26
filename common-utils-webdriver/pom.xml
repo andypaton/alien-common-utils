@@ -18,8 +18,14 @@
 			<version>3.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>net.sf.m-m-m</groupId>
+			<artifactId>mmm-util-backport-java.util.function</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
 		<!-- CUCUMBER -->
-		
+
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>

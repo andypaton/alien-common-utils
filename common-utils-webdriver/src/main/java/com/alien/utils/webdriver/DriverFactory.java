@@ -56,12 +56,12 @@ public class DriverFactory {
             driver = new RemoteWebDriverForCucumber(new URL(hub), DesiredCapabilities.chrome());
         } else if (REMOTE_FIREFOX.equals(webDriver)) {
             driver = new RemoteWebDriverForCucumber(new URL(hub), DesiredCapabilities.firefox());
-        } else if (REMOTE_EDGE.equals(webDriver)) {
-            driver = new RemoteWebDriverForCucumber(new URL(hub), DesiredCapabilities.edge());
+//        } else if (REMOTE_EDGE.equals(webDriver)) {
+//            driver = new RemoteWebDriverForCucumber(new URL(hub), DesiredCapabilities.edge());
         } else if (REMOTE_INTERNET_EXPLORER.equals(webDriver)) {
             driver = new RemoteWebDriverForCucumber(new URL(hub), DesiredCapabilities.internetExplorer());
-        } else if (PHANTOMJS.equals(webDriver)) {
-            driver = PhantomJSDriverForCucumber.getPhantomDriver();
+//        } else if (PHANTOMJS.equals(webDriver)) {
+//            driver = PhantomJSDriverForCucumber.getPhantomDriver();
         } else {
             driver = new FirefoxDriverForCucumber();
         }

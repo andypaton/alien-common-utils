@@ -12,7 +12,8 @@ public class WebDriverUtility extends TestFrameworkUtility {
 
     private DriverFactory driverFactory;
 
-    public CucumberWebDriver getWebDriver() {
+    @Override
+	public CucumberWebDriver getWebDriver() {
         return getWebDriver();
     }
 

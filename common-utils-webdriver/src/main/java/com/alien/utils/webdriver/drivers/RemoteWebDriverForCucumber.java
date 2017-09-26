@@ -10,6 +10,7 @@ import com.alien.utils.webdriver.CucumberWebDriver;
 
 import cucumber.api.Scenario;
 
+
 public class RemoteWebDriverForCucumber extends RemoteWebDriver implements CucumberWebDriver {
 
     private static final String IMAGE_PNG = "image/png";
