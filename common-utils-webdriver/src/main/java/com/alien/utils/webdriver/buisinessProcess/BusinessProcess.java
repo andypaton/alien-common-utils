@@ -6,15 +6,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.alien.utils.webdriver.WebDriverUtility;
+import com.alien.utils.webdriver.config.WebDriverConfig;
+import com.alien.utils.webdriver.runtime.RuntimeState;
 
 
+@ContextConfiguration(classes=WebDriverConfig.class)
 public abstract class BusinessProcess implements BusinessProcessExecution {
 
 	private static final int WAIT_30_SECS = 30;
 
+    @Autowired
     private WebDriverUtility webDriverUtility;
+    
+    @Autowired
+    protected RuntimeState runtimeState;
+    
 
     @Override
     public void execute() {
@@ -45,7 +55,7 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     }
 
     protected void snap(String linkText) {
-     	webDriverUtility.getWebDriver().takeScreenShot(webDriverUtility.getScenario(), linkText);
+     	webDriverUtility.getWebDriver().takeScreenShot(runtimeState.getScenario(), linkText);
     }
     
     protected void waitImplicity(long time) {
@@ -57,7 +67,7 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     }
 
     protected void waitForElement(By locator, int waitInSeconds) {
-    	    WebDriverWait wait = new WebDriverWait(webDriverUtility.getWebDriver(), waitInSeconds);
+    	    WebDriverWait wait = new WebDriverWait(runtimeState.getWebDriver(), waitInSeconds);
     	    wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 

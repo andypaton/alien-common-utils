@@ -7,18 +7,19 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import com.alien.utils.webdriver.AcceptanceTestException;
 import com.alien.utils.webdriver.TestFrameworkUtility;
+import com.alien.utils.webdriver.runtime.RuntimeState;
 
 public class WebDriverUtility extends TestFrameworkUtility {
 
     private DriverFactory driverFactory;
+//    private RuntimeState runtimeState;
 
-    @Override
 	public CucumberWebDriver getWebDriver() {
-        return getWebDriver();
+        return runtimeState.getWebDriver();
     }
 
     public void takeScreenShot(String description) {
-        getWebDriver().takeScreenShot(getScenario(), description);
+        getWebDriver().takeScreenShot(runtimeState.getScenario(), description);
     }
 
     public void takeScreenShot() {
@@ -31,9 +32,9 @@ public class WebDriverUtility extends TestFrameworkUtility {
 
     public void closeDriver() {
 
-        if (getWebDriver() != null) {
-        	    getWebDriver().quit();
-        	    setWebDriver(null);
+        if (runtimeState.getWebDriver() != null) {
+        	    runtimeState.getWebDriver().quit();
+        	    runtimeState.setWebDriver(null);
         }
 
     }
@@ -51,12 +52,12 @@ public class WebDriverUtility extends TestFrameworkUtility {
         }
 
         try {
-            if (getWebDriver() != null) {
-            	    getWebDriver().get(targetEndpoint);
+            if (runtimeState.getWebDriver() != null) {
+            	    runtimeState.getWebDriver().get(targetEndpoint);
             } else {
                 final CucumberWebDriver webDriver = driverFactory.getInstance();
-                setWebDriver(webDriver);
-                getWebDriver().get(targetEndpoint);
+                runtimeState.setWebDriver(webDriver);
+                runtimeState.getWebDriver().get(targetEndpoint);
             }
         } catch (IOException | URISyntaxException e) {
             throw new AcceptanceTestException("An error occurred registering a target endpoint via a Selenium web driver", e);
