@@ -9,11 +9,15 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
+
 public class PageObject {
+
+    protected WebDriver webDriver;
 
 	public static final int ONE_SECOND = 1;
 	public static final int FIVE_SECONDS = 5;
@@ -22,26 +26,34 @@ public class PageObject {
 	public static final String ELEMENT_IS_CLICKABLE = "elementIsClickable";
 	public static final String ELEMENT_IS_VISIBLE = "elementIsVisible";
     
-    public <T> void waitForPageToLoad(Class<T> clz, final WebDriver webDriver) {
+			
+	public PageObject(WebDriver driver){
+		this.webDriver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+    public <T> void waitForPageToLoad(Class<T> clz) {
+//        public <T> void waitForPageToLoad(Class<T> clz, final WebDriver webDriver) {
+    	
         for (final Field field : clz.getDeclaredFields()) {
         	if (field.isAnnotationPresent(FindBy.class)) {
                 if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).id())) {
-                	waitForElement(webDriver, By.id(field.getAnnotation(FindBy.class).id()), ELEMENT_IS_VISIBLE);
+                	waitForElement(By.id(field.getAnnotation(FindBy.class).id()), ELEMENT_IS_VISIBLE);
                 }
                 else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).name())) {
-                	waitForElement(webDriver, By.name(field.getAnnotation(FindBy.class).name()), ELEMENT_IS_VISIBLE);
+                	waitForElement(By.name(field.getAnnotation(FindBy.class).name()), ELEMENT_IS_VISIBLE);
                 }
                 else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).className())) {
-                	waitForElement(webDriver, By.className(field.getAnnotation(FindBy.class).className()), ELEMENT_IS_VISIBLE);
+                	waitForElement(By.className(field.getAnnotation(FindBy.class).className()), ELEMENT_IS_VISIBLE);
                 } 
                 else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).xpath())) {
-                	waitForElement(webDriver, By.xpath(field.getAnnotation(FindBy.class).xpath()), ELEMENT_IS_VISIBLE);
+                	waitForElement(By.xpath(field.getAnnotation(FindBy.class).xpath()), ELEMENT_IS_VISIBLE);
                 }
         	}
         }
     }
     
-	public <T> WebElement waitForElement(final WebDriver webDriver, final By locator, String condition) {
+	public <T> WebElement waitForElement(final By locator, String condition) {		
 		
 		new FluentWait<WebDriver>(webDriver)
 				.withTimeout(SIXTY_SECONDS, TimeUnit.SECONDS)
@@ -63,7 +75,7 @@ public class PageObject {
 	}
     
 	private ExpectedCondition<WebElement> expectedCondition(String condition, By locator) {
-
+		
 		switch (condition) {
 		case ELEMENT_IS_VISIBLE:
 			return ExpectedConditions.visibilityOfElementLocated(locator);
@@ -74,7 +86,8 @@ public class PageObject {
 		}
 	}
 	
-	public boolean isElementPresent(WebDriver webDriver, By by)  
+	public boolean isElementPresent(By by)  
+//	public boolean isElementPresent(WebDriver webDriver, By by)  
 	     {  
 	        webDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);  
 	        try  
