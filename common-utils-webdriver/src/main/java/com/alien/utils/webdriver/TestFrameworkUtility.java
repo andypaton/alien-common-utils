@@ -7,7 +7,7 @@ import com.alien.utils.webdriver.config.WebDriverConfig;
 
 import cucumber.api.Scenario;
 
-@ContextConfiguration(classes=WebDriverConfig.class)
+@ContextConfiguration(classes={WebDriverConfig.class, cucumber.api.Scenario.class})
 public class TestFrameworkUtility {
     
     @Autowired

@@ -21,8 +21,7 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
 
 	private static final int WAIT_30_SECS = 30;
 
-    @Autowired
-    private WebDriverUtility webDriverUtility;
+    private WebDriverUtility webDriverUtility = new WebDriverUtility();
     
     @Autowired
     protected Scenario scenario;
