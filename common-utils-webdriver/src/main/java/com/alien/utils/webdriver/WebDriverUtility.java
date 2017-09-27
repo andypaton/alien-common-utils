@@ -7,7 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 
 public class WebDriverUtility extends TestFrameworkUtility {
 
-    private DriverFactory driverFactory;
+    private static DriverFactory driverFactory = new DriverFactory();
    
 
 	public CucumberWebDriver getWebDriver() {

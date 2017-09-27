@@ -22,10 +22,7 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
 	private static final int WAIT_30_SECS = 30;
 
     private WebDriverUtility webDriverUtility = new WebDriverUtility();
-    
-    @Autowired
-    protected Scenario scenario;
-    
+        
     @Autowired
     protected CucumberWebDriver webDriver;
     
@@ -59,7 +56,7 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     }
 
     protected void snap(String linkText) {
-     	webDriverUtility.getWebDriver().takeScreenShot(scenario, linkText);
+     	webDriverUtility.getWebDriver().takeScreenShot(webDriverUtility.getScenario(), linkText);
     }
     
     protected void waitImplicity(long time) {

@@ -5,7 +5,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.alien.utils.webdriver.CucumberWebDriver;
-import com.alien.utils.webdriver.WebDriverUtility;
+
+import cucumber.api.Scenario;
 
 @Configuration
 @ComponentScan(basePackages={"com.alien.utils.webdriver"})
@@ -21,4 +22,5 @@ public class WebDriverConfig {
 //	WebDriverUtility webDriverUtility() {
 //		return new WebDriverUtility();
 //	}
+
 }
