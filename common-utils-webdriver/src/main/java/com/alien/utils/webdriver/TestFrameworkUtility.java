@@ -4,19 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.alien.utils.webdriver.config.WebDriverConfig;
-import com.alien.utils.webdriver.runtime.RuntimeState;
 
 import cucumber.api.Scenario;
 
 @ContextConfiguration(classes=WebDriverConfig.class)
 public class TestFrameworkUtility {
-	
-    @Autowired
-    protected RuntimeState runtimeState;
     
+    @Autowired
+    protected CucumberWebDriver webDriver;
+    
+    @Autowired
+    protected Scenario scenario;
 
+    
     public void registerScenario(final Scenario scenario) {
-      	runtimeState.setScenario(scenario);
+      	this.scenario = scenario;
     }
     
 }

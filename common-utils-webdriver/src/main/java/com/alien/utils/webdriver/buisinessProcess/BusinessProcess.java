@@ -9,9 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.alien.utils.webdriver.CucumberWebDriver;
 import com.alien.utils.webdriver.WebDriverUtility;
 import com.alien.utils.webdriver.config.WebDriverConfig;
-import com.alien.utils.webdriver.runtime.RuntimeState;
+
+import cucumber.api.Scenario;
 
 
 @ContextConfiguration(classes=WebDriverConfig.class)
@@ -23,7 +25,10 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     private WebDriverUtility webDriverUtility;
     
     @Autowired
-    protected RuntimeState runtimeState;
+    protected Scenario scenario;
+    
+    @Autowired
+    protected CucumberWebDriver webDriver;
     
 
     @Override
@@ -55,7 +60,7 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     }
 
     protected void snap(String linkText) {
-     	webDriverUtility.getWebDriver().takeScreenShot(runtimeState.getScenario(), linkText);
+     	webDriverUtility.getWebDriver().takeScreenShot(scenario, linkText);
     }
     
     protected void waitImplicity(long time) {
@@ -67,7 +72,7 @@ public abstract class BusinessProcess implements BusinessProcessExecution {
     }
 
     protected void waitForElement(By locator, int waitInSeconds) {
-    	    WebDriverWait wait = new WebDriverWait(runtimeState.getWebDriver(), waitInSeconds);
+    	    WebDriverWait wait = new WebDriverWait(webDriver, waitInSeconds);
     	    wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
