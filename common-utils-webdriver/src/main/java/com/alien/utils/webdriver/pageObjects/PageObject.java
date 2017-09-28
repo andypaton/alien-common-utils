@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class PageObject {
@@ -33,7 +35,6 @@ public class PageObject {
 	}
 	
     public <T> void waitForPageToLoad(Class<T> clz) {
-//        public <T> void waitForPageToLoad(Class<T> clz, final WebDriver webDriver) {
     	
         for (final Field field : clz.getDeclaredFields()) {
         	if (field.isAnnotationPresent(FindBy.class)) {
@@ -51,6 +52,19 @@ public class PageObject {
                 }
         	}
         }
+    }
+    
+    public void waitForLoad() {
+    	
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+                    }
+                };
+                
+        WebDriverWait wait = new WebDriverWait(webDriver, 300);
+        wait.until(pageLoadCondition);
     }
     
 	public <T> WebElement waitForElement(final By locator, String condition) {		

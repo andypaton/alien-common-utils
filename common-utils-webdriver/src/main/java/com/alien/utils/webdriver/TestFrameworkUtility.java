@@ -13,7 +13,7 @@ public class TestFrameworkUtility {
     @Autowired
     protected CucumberWebDriver webDriver;
     
-    protected Scenario scenario;
+    protected static Scenario scenario;
 
     
     public void registerScenario(final Scenario scenario) {
