@@ -11,7 +11,7 @@ import org.openqa.selenium.OutputType;
 //import org.openqa.selenium.phantomjs.PhantomJSDriver;
 //import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import com.alien.utils.webdriver.CucumberWebDriver;
+
 import cucumber.api.Scenario;
 
 public class PhantomJSDriverForCucumber  {
