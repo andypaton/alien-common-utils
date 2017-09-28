@@ -42,6 +42,8 @@ public class DriverFactory {
             webDriver = System.getProperty("webdriver");
         }
         
+	    System.setProperty("webdriver.gecko.driver", "/Users/andypaton/git/common-utils/common-utils-webdriver/src/main/java/com/alien/utils/webdriver/drivers/geckodriver");
+        
         if (System.getProperty("web.batch.admin.remote.hub") != null) {
             hub = System.getProperty("web.batch.admin.remote.hub");
         }

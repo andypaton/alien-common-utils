@@ -49,12 +49,12 @@ public class WebDriverUtility extends TestFrameworkUtility {
         try {
             if (webDriver != null) {
             	
-            	webDriver.get(targetEndpoint);
+            	    webDriver.get(targetEndpoint);
             	
             } else {
 
-            	webDriver = driverFactory.getInstance();
-            	webDriver.get(targetEndpoint);
+            	    webDriver = driverFactory.getInstance();
+            	    webDriver.get(targetEndpoint);
             }
         } catch (IOException | URISyntaxException e) {
             throw new AcceptanceTestException("An error occurred registering a target endpoint via a Selenium web driver", e);

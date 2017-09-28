@@ -16,6 +16,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static com.alien.utils.webdriver.pageObjects.State.ELEMENT_IS_CLICKABLE;
+import static com.alien.utils.webdriver.pageObjects.State.ELEMENT_IS_VISIBLE;
 
 public class PageObject {
 
@@ -25,8 +27,8 @@ public class PageObject {
 	public static final int FIVE_SECONDS = 5;
 	public static final int THIRTY_SECONDS = 30;
 	public static final int SIXTY_SECONDS = 60;
-	public static final String ELEMENT_IS_CLICKABLE = "elementIsClickable";
-	public static final String ELEMENT_IS_VISIBLE = "elementIsVisible";
+//	public static final String ELEMENT_IS_CLICKABLE = "elementIsClickable";
+//	public static final String ELEMENT_IS_VISIBLE = "elementIsVisible";
     
 			
 	public PageObject(WebDriver driver){
@@ -63,11 +65,11 @@ public class PageObject {
                     }
                 };
                 
-        WebDriverWait wait = new WebDriverWait(webDriver, 300);
+        WebDriverWait wait = new WebDriverWait(webDriver, THIRTY_SECONDS);
         wait.until(pageLoadCondition);
     }
     
-	public <T> WebElement waitForElement(final By locator, String condition) {		
+	public <T> WebElement waitForElement(final By locator, State condition) {		
 		
 		new FluentWait<WebDriver>(webDriver)
 				.withTimeout(SIXTY_SECONDS, TimeUnit.SECONDS)
@@ -88,7 +90,7 @@ public class PageObject {
 		return this;
 	}
     
-	private ExpectedCondition<WebElement> expectedCondition(String condition, By locator) {
+	private ExpectedCondition<WebElement> expectedCondition(State condition, By locator) {
 		
 		switch (condition) {
 		case ELEMENT_IS_VISIBLE:

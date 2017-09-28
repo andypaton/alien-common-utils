@@ -11,7 +11,10 @@
 	<artifactId>common-utils-webdriver</artifactId>
 
 	<properties>
+	<!-- 
 		<selenium.version>2.53.0</selenium.version>
+	 -->
+		<selenium.version>3.5.3</selenium.version>
 	</properties>
 
 	<dependencies>
