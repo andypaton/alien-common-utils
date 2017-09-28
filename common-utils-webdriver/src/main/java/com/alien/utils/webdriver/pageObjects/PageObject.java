@@ -100,22 +100,21 @@ public class PageObject {
 		}
 	}
 	
-	public boolean isElementPresent(By by)  
-//	public boolean isElementPresent(WebDriver webDriver, By by)  
-	     {  
+	public boolean isElementPresent(By by) {  
+		
 	        webDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);  
-	        try  
-	        {  
-	            webDriver.findElement(by);  
+	        try {  
+	            
+	        	webDriver.findElement(by);  
 	            return true;  
 	        }  
-	        catch(NoSuchElementException e)  
-	        {  
+	        catch(NoSuchElementException e) {
+	        	
 	            return false;  
 	        }  
-	       finally  
-	       {  
-	           webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
+	        finally {
+	        	
+	            webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
 	       }  
 	}
 }
