@@ -1,5 +1,7 @@
 package com.alien.utils.webdriver.pageObjects;
 
+import static com.alien.utils.webdriver.pageObjects.State.ELEMENT_IS_VISIBLE;
+
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 
@@ -16,9 +18,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static com.alien.utils.webdriver.pageObjects.State.ELEMENT_IS_CLICKABLE;
-import static com.alien.utils.webdriver.pageObjects.State.ELEMENT_IS_VISIBLE;
-
 public class PageObject {
 
     protected WebDriver webDriver;
@@ -27,8 +26,6 @@ public class PageObject {
 	public static final int FIVE_SECONDS = 5;
 	public static final int THIRTY_SECONDS = 30;
 	public static final int SIXTY_SECONDS = 60;
-//	public static final String ELEMENT_IS_CLICKABLE = "elementIsClickable";
-//	public static final String ELEMENT_IS_VISIBLE = "elementIsVisible";
     
 			
 	public PageObject(WebDriver driver){
@@ -39,20 +36,26 @@ public class PageObject {
     public <T> void waitForPageToLoad(Class<T> clz) {
     	
         for (final Field field : clz.getDeclaredFields()) {
-        	if (field.isAnnotationPresent(FindBy.class)) {
+          	if (field.isAnnotationPresent(FindBy.class)) {
+        		
                 if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).id())) {
-                	waitForElement(By.id(field.getAnnotation(FindBy.class).id()), ELEMENT_IS_VISIBLE);
+             
+            	        waitForElement(By.id(field.getAnnotation(FindBy.class).id()), ELEMENT_IS_VISIBLE);
+            
+                }else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).name())) {
+                	
+            	        waitForElement(By.name(field.getAnnotation(FindBy.class).name()), ELEMENT_IS_VISIBLE);
+            
+                }else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).className())) {
+             
+            	        waitForElement(By.className(field.getAnnotation(FindBy.class).className()), ELEMENT_IS_VISIBLE);
+            
+                }else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).xpath())) {
+              
+            	        waitForElement(By.xpath(field.getAnnotation(FindBy.class).xpath()), ELEMENT_IS_VISIBLE);
+            
                 }
-                else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).name())) {
-                	waitForElement(By.name(field.getAnnotation(FindBy.class).name()), ELEMENT_IS_VISIBLE);
-                }
-                else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).className())) {
-                	waitForElement(By.className(field.getAnnotation(FindBy.class).className()), ELEMENT_IS_VISIBLE);
-                } 
-                else if (StringUtils.isNotBlank(field.getAnnotation(FindBy.class).xpath())) {
-                	waitForElement(By.xpath(field.getAnnotation(FindBy.class).xpath()), ELEMENT_IS_VISIBLE);
-                }
-        	}
+        	    }
         }
     }
     
@@ -104,19 +107,19 @@ public class PageObject {
 	
 	public boolean isElementPresent(By by) {  
 		
-	        webDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);  
-	        try {  
+	    webDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);  
+	    try {  
 	            
 	        	webDriver.findElement(by);  
-	            return true;  
-	        }  
-	        catch(NoSuchElementException e) {
+	        return true;  
+	    }  
+	    catch(NoSuchElementException e) {
 	        	
-	            return false;  
-	        }  
-	        finally {
+	        return false;  
+	    }  
+	    finally {
 	        	
-	            webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
-	       }  
+	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
+	    }  
 	}
 }

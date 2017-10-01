@@ -40,8 +40,6 @@ public class WebDriverUtility extends TestFrameworkUtility {
 
     public void registerTargetEndpoint(String targetEndpoint, boolean useExistingDriver) {
     	
-//        context.getApplicationName();
-
         if (!useExistingDriver) {
             closeDriver();
         }
