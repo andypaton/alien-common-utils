@@ -3,6 +3,7 @@ package com.alien.utils.webdriver;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.JavascriptExecutor;
 
 public class WebDriverUtility extends TestFrameworkUtility {
@@ -15,7 +16,10 @@ public class WebDriverUtility extends TestFrameworkUtility {
     }
 
     public void takeScreenShot(String description) {
-        getWebDriver().takeScreenShot(scenario, description);
+    	
+    	if (!StringUtils.equals("false", System.getProperty("show.screenshots"))){
+            getWebDriver().takeScreenShot(scenario, description);
+    	}
     }
 
     public void takeScreenShot() {
