@@ -5,7 +5,7 @@ import java.sql.Connection;
 import javax.sql.DataSource;
 
 public interface DatabaseDriver {
-	
+
     void cleanUp();
     Connection createConnectionFor(String username, String password);
     DataSource createDataSourceFor(String username, String password);
@@ -15,5 +15,4 @@ public interface DatabaseDriver {
     boolean hasTable(String esername, String tableName);
     void truncateTable(String username, String tableName);
     boolean userExists(String username);
-
 }
