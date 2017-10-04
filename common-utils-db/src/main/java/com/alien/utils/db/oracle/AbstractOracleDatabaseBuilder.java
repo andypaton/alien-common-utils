@@ -5,9 +5,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import com.alien.utils.db.DropUserTearDownHandler;
 import com.alien.utils.db.TearDownHandler;
-import com.alien.utils.db.environment.EnvironmentBuilder2;
+import com.alien.utils.db.environment.EnvironmentBuilder;
 
-public abstract class AbstractOracleDatabaseBuilder implements EnvironmentBuilder2 {
+public abstract class AbstractOracleDatabaseBuilder implements EnvironmentBuilder {
 
     private final String name;
     private final String password;

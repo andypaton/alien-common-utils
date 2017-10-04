@@ -11,11 +11,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.alien.utils.db.environment.BuildOrder;
 import com.alien.utils.db.environment.EnvironmentBuildDefinition;
-import com.alien.utils.db.environment.EnvironmentBuildDefinitionComparator;
-import com.bskyb.common.environment.BuildOrder;
+import com.alien.utils.db.environment.EnvironmentBuildDefinitionComparator_old;
 
-public class EnvironmentBuildDefinitionComparatorTest {
+public class EnvironmentBuildDefinitionComparatorTest_old {
 
     @Test
     public void shouldSortBuildersAlphabetically() {
@@ -30,7 +30,7 @@ public class EnvironmentBuildDefinitionComparatorTest {
         buildDefinitions.add(buildDefinition1);
         buildDefinitions.add(buildDefinition2);
 
-        Collections.sort(buildDefinitions, new EnvironmentBuildDefinitionComparator());
+        Collections.sort(buildDefinitions, new EnvironmentBuildDefinitionComparator_old());
 
         assertThat(buildDefinitions, contains(buildDefinition2, buildDefinition1));
     }
@@ -55,7 +55,7 @@ public class EnvironmentBuildDefinitionComparatorTest {
         buildDefinitions.add(buildDefinition2);
         buildDefinitions.add(buildDefinition3);
 
-        Collections.sort(buildDefinitions, new EnvironmentBuildDefinitionComparator());
+        Collections.sort(buildDefinitions, new EnvironmentBuildDefinitionComparator_old());
 
 //        printBuildDefintions(buildDefinitions);
         
@@ -87,7 +87,7 @@ public class EnvironmentBuildDefinitionComparatorTest {
         buildDefinitions.add(buildDefinition3);
         buildDefinitions.add(buildDefinition4);
 
-        Collections.sort(buildDefinitions, new EnvironmentBuildDefinitionComparator());
+        Collections.sort(buildDefinitions, new EnvironmentBuildDefinitionComparator_old());
 
 //        printBuildDefintions(buildDefinitions);
 

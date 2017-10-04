@@ -1,4 +1,4 @@
-package com.alien.utils.db.test;
+package com.alien.utils.db.oracle;
 
 import static java.lang.String.format;
 import static org.hamcrest.Matchers.is;
@@ -18,12 +18,14 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alien.utils.db.DatabaseDriver;
+import com.alien.utils.db.oracle.OracleDatabaseDriver;
 import com.alien.utils.db.oracle.exceptions.OracleUserAlreadyExistsException;
 
 
 
 public class OracleDatabaseDriverIntegrationTest {
 
+    private static final String TEST_HOSTNAME           = "localhost";
     private static final String TEST_USERNAME           = "test_user";
     private static final String TEST_PASSWORD           = "test_password";
     private static final String TEST_TABLE              = "test_table";

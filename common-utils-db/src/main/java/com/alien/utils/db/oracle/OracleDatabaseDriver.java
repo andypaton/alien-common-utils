@@ -147,7 +147,7 @@ public class OracleDatabaseDriver implements DatabaseDriver {
 
     @Override
     public boolean userExists(String username) {
-        int count = jdbcTemplate.queryForInt("SELECT COUNT(*) FROM ALL_USERS WHERE USERNAME=UPPER(?)", username);
+        int count = jdbcTemplate.queryForInt("SELECT COUNT(*) FROM ALL_USERS WHERE USERNAME=UPPER(?)", new Object[] { username });
 
         return count == 1 ? true : false;
     }

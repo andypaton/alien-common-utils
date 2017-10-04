@@ -1,7 +1,7 @@
 package com.alien.utils.db.generator;
 
 
-public class ChangeLogContext {
+public class ChangeLogContext_old {
 
     private String filename;
     private String hostname;

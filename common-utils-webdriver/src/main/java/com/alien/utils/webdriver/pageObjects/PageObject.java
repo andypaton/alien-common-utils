@@ -122,4 +122,20 @@ public class PageObject {
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
 	    }  
 	}
+	
+	public void clickUntilElementIsDisplayed(WebElement webElementToClick, WebElement webElementToWaitFor){
+		
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis() - start <= Integer.valueOf(SIXTY_SECONDS * 1000)) {
+        	try{
+        		webElementToClick.click();
+		        if (webElementToWaitFor.isDisplayed()){
+		            break;
+		        }
+        	}
+        	catch(Exception e){
+        		pause(ONE_SECOND);
+        	}
+        }
+	}
 }

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("com.alien.utils.db")
-public class EnvironmentBuildDefinitionCollector {
+public class EnvironmentBuildDefinitionCollector_old {
 
     protected static final boolean ALLOW_EAGER_INIT = true;
     protected static final boolean INCLUDE_NON_SINGLETONS = true;
