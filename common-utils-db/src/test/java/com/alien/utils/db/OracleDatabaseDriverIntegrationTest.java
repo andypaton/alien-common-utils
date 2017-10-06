@@ -1,4 +1,4 @@
-package com.alien.utils.db.oracle;
+package com.alien.utils.db;
 
 import static java.lang.String.format;
 import static org.hamcrest.Matchers.is;
