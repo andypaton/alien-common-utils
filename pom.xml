@@ -14,20 +14,37 @@
 		<url>https://github.com/andypaton/common-test-utils.git</url>
 	</scm>
 
-	<modules>
-		<module>common-utils-webdriver</module>
-		<module>common-utils-report</module>
-		<module>common-utils-assertion</module>
-		<module>common-utils-db</module>
-		<module>common-utils-mq</module>
-	</modules>
-	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>common-utils-webdriver2</module>
+				<module>common-utils-report</module>
+				<module>common-utils-assertion</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>wip</id>
+			<modules>
+                <module>common-utils-webdriver</module>
+                <module>common-utils-webdriver2</module>
+				<module>common-utils-report</module>
+				<module>common-utils-assertion</module>
+				<module>common-utils-db</module>
+				<module>common-utils-mq</module>
+			</modules>
+		</profile>
+	</profiles>
 
 	<dependencyManagement>
 		<dependencies>
