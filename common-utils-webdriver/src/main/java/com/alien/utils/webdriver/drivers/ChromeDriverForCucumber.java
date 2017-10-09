@@ -18,8 +18,7 @@ public class ChromeDriverForCucumber extends ChromeDriver implements CucumberWeb
 
     static {
 
-        final String absolutePath = Thread.currentThread().getContextClassLoader().getResource(CHROME_DRIVER_PATH)
-                .getPath();
+        final String absolutePath = Thread.currentThread().getContextClassLoader().getResource(CHROME_DRIVER_PATH).getPath();
 
         final File chromeDriverFile = new File(absolutePath);
 
