@@ -118,6 +118,7 @@ public final class WebDriverFactory {
       capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
       capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_PAGE_SETTINGS_PREFIX + "loadImages", true);
       capabilities.setCapability("takesScreenshot", true);
+      capabilities.setJavascriptEnabled(true);
      
       final File phantomjsDriverFile = new File(getAbsolutePath(PHANTOMJS_DRIVER_PATH));
       if (phantomjsDriverFile.exists() && !phantomjsDriverFile.canExecute()) {
