@@ -1,4 +1,4 @@
-package com.alien.utils.webdriver.exception;
+package com.alien.utils.webdriver.exceptions;
 
 public class SeleniumTimeoutException extends RuntimeException {
 }

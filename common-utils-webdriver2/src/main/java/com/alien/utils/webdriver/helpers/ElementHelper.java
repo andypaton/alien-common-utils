@@ -1,4 +1,4 @@
-package com.alien.utils.webdriver.helper;
+package com.alien.utils.webdriver.helpers;
 
 
 import java.util.List;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.alien.utils.webdriver.exception.SeleniumTimeoutException;
+import com.alien.utils.webdriver.exceptions.SeleniumTimeoutException;
 
 public class ElementHelper {
 
