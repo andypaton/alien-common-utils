@@ -12,9 +12,7 @@
 
 	<properties>
 		<selenium.version>2.53.0</selenium.version>
-	<!-- 
-		<selenium.version>3.5.3</selenium.version>
-	 -->
+		<!-- <selenium.version>3.5.3</selenium.version> -->
 	</properties>
 
 	<dependencies>
@@ -142,6 +140,11 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>htmlunit-driver</artifactId>
 			<version>2.23.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.2.1</version>
 		</dependency>
 
 	</dependencies>

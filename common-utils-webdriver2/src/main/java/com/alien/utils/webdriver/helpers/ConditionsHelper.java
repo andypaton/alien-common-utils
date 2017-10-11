@@ -1,4 +1,4 @@
-package com.alien.utils.webdriver.helper;
+package com.alien.utils.webdriver.helpers;
 
 import java.util.List;
 
